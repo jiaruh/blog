@@ -1,7 +1,7 @@
 ---
 title: appium 入门参考
 date: 2020-11-03 14:31:55
-tags: appium
+tags: appium 技术 入门
 ---
 # 前言
 游戏发行业务中，对游戏进行测试是保证游戏质量重要的一环。传统人工测试的方法费时费力、容易出错，自动化测试才是更好的解决方案。`appium`则是自动化测试的优秀方案，新手可以通过官网的[开始文档](http://appium.io/docs/en/about-appium/getting-started/)快速入门。
