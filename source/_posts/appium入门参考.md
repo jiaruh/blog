@@ -140,6 +140,6 @@ appium的图片识别依赖于`openCV`，请先根据命令行引导安装好环
 * * *
 **参考链接**
 
-* http://appium.io/docs/en/about-appium/getting-started/
+* https://appium.io/docs/en/about-appium/getting-started/
 * https://appiumpro.com/editions/8-how-to-find-elements-in-ios-not-by-xpath
 * https://github.com/facebookarchive/WebDriverAgent/wiki/Class-Chain-Queries-Construction-Rules
