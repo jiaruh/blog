@@ -98,7 +98,7 @@ driver.find_element_by_ios_class_chain('**/XCUIElementTypeButton[`label == "登�
 
 * * *
 
-`XCUIElementTypeButton`是按钮元素在iOS的XCTest框架的枚举名称表示。查看[XCTest文档](`https://developer.apple.com/documentation/xctest/xcuielementtype?language=objc`)可以查看更多其他可用控件元素名称。
+`XCUIElementTypeButton`是按钮元素在iOS的XCTest框架的枚举名称表示。查看[XCTest文档](https://developer.apple.com/documentation/xctest/xcuielementtype?language=objc)可以查看更多其他可用控件元素名称。
 
 * * *
 
