@@ -96,7 +96,14 @@ ignore:
 theme: cactus
 theme_config:
   colorscheme: white
-  
+  nav:
+    home: /
+    articles: /archives/
+  social_links:
+    github: https://github.com/jiaruh
+    linkedin: https://www.linkedin.com/in/jiaruh/
+    mail: mailto:jiaruh@gmail.com
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
