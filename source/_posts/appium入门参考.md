@@ -21,14 +21,14 @@ iOS的UI测试的技术方案首先有两个大的方向：原生方向以及跨
 | 跨平台 | appium  | Python、JS等       | 有           | 有       | 优          | 一般     |
 | 跨平台 | airtest | Python             | 有           | 有       | 一般（iOS） | 优       |
 
-
+<!-- more -->
 ### 原生
 原生方向优势在于原生控件识别的速度以及准确度，以及框架更新维护的及时。劣势在于没有直接集成**图片识别**的功能，而图片识别是游戏的自动化UI测试关键的一环。因此原生方向是适合App的自动化UI测试方案，不适合直接应用于游戏。此外，原生方向还对使用人员有掌握iOS开发的要求，不便于我们（笔者是iOS开发）与测试人员合作开发。
 ### 跨平台
 跨平台方向是实现iOS手游UI自动化测试更好的选择。此方向的具体实现有很多，表格举了两个较为典型的例子：`appium`以及`airtest`。
 #### appium
 appium是开源社区最为流程的移动UI测试框架，支持多种编程语言编写脚本。项目更新频繁，bug修复及时。功能方面，原生控件识别、图片识别都齐全。使用过程遇到的问题在社区中能较快找到解决方法。缺点在于appium的IDE等配套（指免费方案）不完善，且没有针对手游进行专门优化，实际使用需要自己实现较多的脚手架以及轮子。
-### airtest
+#### airtest
 airtest是网易公司专门针对手游优化的UI测试方案，使用Python语言进行编写脚本。IDE、中文文档等配套完善易用，同时也是免费的。缺点在于，**单就iOS而言**，核心框架 `iOS-Tagent`的代码并不开源，且在新版Xcode适配，bug修复等问题上都较慢。使用人员碰到问题往往比较被动，只能Github报issue然后等待官方修复。
 
 综合考虑后，笔者选择了appium作为iOS手游UI测试方案。
@@ -78,10 +78,10 @@ driver.find_element_by_accessibility_id('login_vc_login_btn')
 此外，侵入式方案的查找效率往往会比下面介绍的非侵入式方案**更慢**，可以使用桌面版appium进行控件查找时间测试。
 {% asset_img appium_time.png appium_time %}
 
-## 非侵入式查找策略
+### 非侵入式查找策略
 非侵入式查找策略原理是通过**规则匹配**的方式查找控件，无需iOS端提前适配，且识别速度会**更快**。
 
-### ios-class-chain 上手使用
+#### ios-class-chain 上手使用
 非侵入式查找策略有多种，但此处只介绍其中的集大成者`ios-class-chain`查找策略。先看代码：
 ```Python
 # appium脚本代码
@@ -97,7 +97,7 @@ driver.find_element_by_ios_class_chain('**/XCUIElementTypeButton[`label == "登�
 ```
 * * *
 `**/` 符号放在了`selector`开头，作用是避免在根层级直接查找元素。此外，正如`ios-class-chain`名称本身所示，我们能**链式组合**出更精确更复杂的`selector`去满足查找需求，`**/`符号此时可能出现在`selector`中间。含义指后面的元素不是当前层级的直接子代（child），是间接子代（子代的子代，descendant）。
-```
+```Python
 **/XCUIElementTypeCell[`name BEGINSWITH "D"`]/**/XCUIElementTypeButton
 ```
 
@@ -107,7 +107,7 @@ driver.find_element_by_ios_class_chain('**/XCUIElementTypeButton[`label == "登�
 
 * * *
 
-```
+```Python
 [`label == "登录"`]
 ```
 方括号里面的表达式叫**谓词表达式**，是被查找控件的**约束条件**。此谓词表达式的含义是：**label属性等于登录**。除了表示相等的`==`运算符，表达式能用的运算符，还有逻辑表达式的 `AND`,字符串比较的`BEGINSWITH`等等。appium的[iOS谓词指南](http://appium.io/docs/en/writing-running-appium/ios/ios-predicate/)以及苹果的[谓词编程指南](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html)作了更详细的介绍。
@@ -119,7 +119,7 @@ driver.find_element_by_ios_class_chain('**/XCUIElementTypeButton[`label == "登�
 * * *
 
 表达式左边还有一个属性也很常见：`name`。假如在 **iOS** 端已经给控件**提前适配**了标识符(参考侵入式查找策略一节)，名为：`ctrl_access_id`，谓词表达式就可写成：
-```
+```Python
 [`name == "ctrl_access_id"`]
 ```
 * * *
