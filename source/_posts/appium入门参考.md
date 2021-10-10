@@ -2,8 +2,8 @@
 title: appium 入门参考
 date: 2020-11-03 14:31:55
 categories: 
-- 技术
-- 原创
+- [技术]
+- [原创]
 tags:
 - appium
 - 技术

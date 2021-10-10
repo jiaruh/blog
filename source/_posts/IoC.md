@@ -2,8 +2,8 @@
 title: IoC
 date: 2020-11-07 12:06:11
 categories: 
-- 技术
-- 笔记
+- [技术]
+- [笔记]
 tags:
 - IoC
 ---
