@@ -1,7 +1,9 @@
 ---
 title: MVC与MVVM、Rx
 date: 2020-11-04 14:20:06
-categories: 技术
+categories: 
+- 技术
+- 笔记
 tags:
 - MVVM
 - Rx
